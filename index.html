@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HO.x9elysium • Third Generation Mahabharata &amp; Ramayana | The Living Epic in the Gap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500&amp;display=swap');
+        
+        :root {
+            --cosmic: #0a090f;
+            --saffron: #ff9f1c;
+            --gold: #f4d35e;
+            --teal: #00d4ff;
+            --deep-purple: #1a1625;
+        }
+        
+        body {
+            background: #0a090f;
+            color: #f5f5f5;
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .epic-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            letter-spacing: -0.025em;
+        }
+
+        .cosmic-bg {
+            background: radial-gradient(circle at 50% 30%, #1a1625 0%, #0a090f 65%);
+        }
+
+        .nav-active {
+            color: #ff9f1c;
+            position: relative;
+        }
+        
+        .nav-active:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, #ff9f1c, transparent);
+        }
+
+        .gold-gradient {
+            background: linear-gradient(90deg, #f4d35e, #ff9f1c, #f4d35e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(to right, #ff9f1c, transparent);
+        }
+
+        .realm-card {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .realm-card:hover {
+            transform: translateY(-15px) scale(1.015);
+            box-shadow: 0 0 50px rgba(255, 159, 28, 0.25);
+        }
+        
+        .realm-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255,159,28,0.12) 0%, transparent 60%);
+            opacity: 0;
+            transition: all 0.5s ease;
+            transform: rotate(25deg);
+        }
+        
+        .realm-card:hover::before {
+            opacity: 1;
+            top: -50%;
+            left: -50%;
+        }
+
+        .prana-orb {
+            width: 260px;
+            height: 260px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 35% 30%, #f4d35e, #ff9f1c, #c2410c);
+            box-shadow: 
+                0 0 90px #f4d35e,
+                0 0 160px rgba(255, 159, 28, 0.5),
+                inset 50px 50px 70px rgba(255,255,255,0.45),
+                inset -45px -45px 70px rgba(0,0,0,0.65);
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .prana-orb:active {
+            transform: scale(0.92);
+        }
+
+        .prana-orb.gap-hold {
+            box-shadow: 
+                0 0 120px #00d4ff,
+                0 0 220px rgba(0, 212, 255, 0.6),
+                inset 0 0 80px rgba(255,255,255,0.8);
+            animation: gap-pulse 1.5s infinite ease-in-out;
+        }
+
+        @keyframes gap-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .sanskrit {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .cosmic-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #f4d35e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #f4d35e;
+            animation: particle-float 18s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .nav-link {
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: #ff9f1c;
+            transform: translateY(-1px);
+        }
+
+        .dharma-score {
+            font-variant-numeric: tabular-nums;
+            transition: all 0.3s ease;
+        }
+
+        .epic-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .epic-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 20%,
+                rgba(255,255,255,0.35) 50%,
+                transparent 80%
+            );
+            transform: skewX(-25deg);
+            animation: shine 2.5s infinite;
+        }
+
+        @keyframes shine {
+            100% {
+                transform: skewX(-25deg) translateX(200%);
+            }
+        }
+
+        .modal {
+            animation: modal-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .wisdom-quote {
+            transition: all 0.5s ease;
+        }
+
+        .gap-detected {
+            animation: gap-explode 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body class="bg-[#0a090f]">
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 right-0 z-[100] bg-[#0a090f]/95 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-4">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#ff9f1c] via-[#f4d35e] to-[#ff9f1c] flex items-center justify-center shadow-[0_0_25px_rgba(255,159,28,0.5)]">
+                        <span class="text-[#0a090f] text-3xl font-black tracking-tighter">ॐ</span>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-3xl tracking-tighter">HO.x9elysium</span>
+                        <span class="block text-[9px] text-[#ff9f1c] font-mono -mt-1 tracking-[2.5px]">THIRD GENERATION</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
+                <a href="#realms" class="nav-link">Realms</a>
+                <a href="#gap-forge" class="nav-link">The Gap Forge</a>
+                <a href="#leela-lab" class="nav-link">Leela Lab</a>
+                <a href="#oracle" class="nav-link">The Oracle</a>
+            </div>
+            
+            <div class="flex items-center gap-x-4">
+                <div class="hidden lg:flex items-center gap-x-2.5 bg-white/5 px-5 py-2 rounded-3xl text-xs border border-white/10">
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse mr-2"></div>
+                        <span class="font-mono text-emerald-400">127,493</span>
+                    </div>
+                    <span class="text-white/50">souls in the Gap</span>
+                </div>
+                
+                <div class="flex items-center gap-x-2 bg-[#1a1625] px-4 py-1.5 rounded-3xl border border-white/10">
+                    <div class="text-xs text-white/60">DHARMA SCORE</div>
+                    <div id="nav-score" class="dharma-score font-mono font-semibold text-xl text-[#f4d35e]">1247</div>
+                </div>
+                
+                <button onclick="enterChariot()" 
+                        class="px-7 py-2.5 bg-gradient-to-r from-[#ff9f1c] to-[#f4d35e] hover:brightness-105 text-[#0a090f] font-bold text-sm rounded-3xl flex items-center gap-x-2 shadow-lg shadow-[#ff9f1c]/30 transition-all active:scale-[0.985]">
+                    <span>ENTER THE CHARIOT</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="min-h-[100dvh] flex items-center justify-center relative cosmic-bg pt-20 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1.5px)] bg-[length:5px_5px]"></div>
+        
+        <div class="max-w-screen-2xl mx-auto px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-x-3 bg-white/5 border border-white/10 px-6 py-1.5 rounded-full mb-8">
+                <div class="px-3 py-px text-xs font-mono tracking-[3px] bg-[#ff9f1c] text-black rounded">3RD GENERATION</div>
+                <div class="text-xs text-white/70 flex items-center gap-x-1.5">
+                    <span>MAHABHARATA × RAMAYANA</span>
+                    <span class="text-[#ff9f1c]">•</span>
+                    <span>THE GAP AWAKENS</span>
+                </div>
+            </div>
+            
+            <h1 class="text-[92px] md:text-[130px] leading-[0.86] font-black tracking-[-5.2px] epic-heading">
+                THE EPICS<br>
+                <span class="gold-gradient">REBORN</span><br>
+                <span class="text-6xl md:text-7xl tracking-normal">IN THE GAP</span>
+            </h1>
+            
+            <p class="max-w-[620px] mx-auto mt-5 text-2xl text-white/75 font-light tracking-tight">
+                Where Krishna’s flute meets your heart rate.<br>
+                Where the Ramayana becomes your daily dharma.
+            </p>
+            
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="beginLeela()" 
+                        class="group px-11 py-4 bg-gradient-to-r from-[#ff9f1c] to-[#f4d35e] hover:from-[#f4d35e] hover:to-[#ff9f1c] text-[#0a090f] font-extrabold text-xl rounded-[22px] flex items-center justify-center gap-x-3 shadow-[0_0_35px_rgba(255,159,28,0.45)] transition-all active:scale-[0.975]">
+                    <span>BEGIN YOUR LEELA</span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                </button>
+                
+                <button onclick="document.getElementById('gap-forge').scrollIntoView({behavior: 'smooth'})" 
+                        class="px-9 py-4 border-2 border-white/30 hover:bg-white/5 text-lg rounded-[22px] flex items-center justify-center gap-x-3 transition-all">
+                    <span>PRACTICE THE GAP</span>
+                </button>
+            </div>
+            
+            <div class="mt-14 flex justify-center gap-x-8 text-xs opacity-60">
+                <div class="flex items-center gap-x-2"><i class="fa-solid fa-globe"></i> <span>127 COUNTRIES</span></div>
+                <div>4.8M LEELAS LIVED</div>
+                <div>312K GAPS TOUCHED TODAY</div>
+            </div>
+        </div>
+        
+        <!-- Subtle chariot silhouette -->
+        <div class="absolute bottom-12 right-12 text-[#ff9f1c]/20 text-[120px]">
+            <i class="fa-solid fa-chariot"></i>
+        </div>
+    </header>
+
+    <!-- THE VISION -->
+    <section class="max-w-screen-2xl mx-auto px-8 py-20 border-b border-white/10">
+        <div class="grid md:grid-cols-12 gap-x-16 gap-y-12 items-center">
+            <div class="md:col-span-7">
+                <div class="section-header mb-6">
+                    <span class="uppercase text-[#ff9f1c] text-xs tracking-[4px] font-mono">THE PROPHECY FULFILLED</span>
+                    <h2 class="text-6xl font-black tracking-tighter epic-heading">We didn’t retell the stories.<br>We uploaded them into your nervous system.</h2>
+                </div>
+                
+                <div class="text-[21px] text-white/75 max-w-3xl leading-tight">
+                    The first generation whispered these epics around fires.<br>
+                    The second generation watched them on television.<br>
+                    <span class="text-white">The third generation lives them — breath by breath, choice by choice, Gap by Gap.</span>
+                </div>
+            </div>
+            
+            <div class="md:col-span-5">
+                <div class="bg-[#1a1625] border border-white/10 rounded-3xl p-8">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <div class="text-4xl font-mono text-[#f4d35e]">18</div>
+                            <div class="text-sm text-white/60 mt-1">Gītā Chapters as living quests</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-mono text-[#f4d35e]">273</div>
+                            <div class="text-sm text-white/60 mt-1">Vachanāmṛta discourses</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-mono text-[#f4d35e]">112</div>
+                            <div class="text-sm text-white/60 mt-1">Vijñāna Bhairava techniques</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-mono text-[#f4d35e]">10</div>
+                            <div class="text-sm text-white/60 mt-1">Interwoven Realities</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE REALMS -->
+    <section id="realms" class="max-w-screen-2xl mx-auto px-8 py-20">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <span class="text-[#ff9f1c] text-xs tracking-[3.5px] font-mono">CHOOSE YOUR BATTLEFIELD</span>
+                <h2 class="text-6xl font-black tracking-tighter epic-heading">The Four Living Realms</h2>
+            </div>
+            <div class="hidden md:block text-right text-sm text-white/60 max-w-[240px]">
+                Each realm is a complete dharma operating system. Switch freely. All paths converge in the Gap.
+            </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Realm 1: Kurukshetra -->
+            <div onclick="openRealmModal(0)" class="realm-card bg-[#1a1625] border border-white/10 hover:border-[#ff9f1c]/50 rounded-3xl p-7 group cursor-pointer">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="text-[#ff9f1c] text-sm font-mono tracking-widest">REALM 01</div>
+                        <div class="text-3xl font-bold mt-3">KURUKṢETRA 3.0</div>
+                        <div class="text-sm text-white/60 mt-1">The Inner War</div>
+                    </div>
+                    <i class="fa-solid fa-swords text-4xl text-[#ff9f1c]/30 group-hover:text-[#ff9f1c]/70 transition"></i>
+                </div>
+                <div class="mt-8 text-sm text-white/70 leading-snug">
+                    Your inbox is the battlefield. Your anger is Duryodhana. Every Slack ping is a Kaurava arrow.
+                </div>
+                <div class="mt-6 flex items-center text-xs text-[#ff9f1c]">
+                    <span>ENTER THE WAR</span> 
+                    <i class="fa-solid fa-arrow-right ml-2 group-hover:ml-3 transition"></i>
+                </div>
+            </div>
+            
+            <!-- Realm 2: Ayodhya -->
+            <div onclick="openRealmModal(1)" class="realm-card bg-[#1a1625] border border-white/10 hover:border-[#ff9f1c]/50 rounded-3xl p-7 group cursor-pointer">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="text-[#ff9f1c] text-sm font-mono tracking-widest">REALM 02</div>
+                        <div class="text-3xl font-bold mt-3">AYODHYĀ ETERNAL</div>
+                        <div class="text-sm text-white/60 mt-1">The Kingdom of Duty</div>
+                    </div>
+                    <i class="fa-solid fa-crown text-4xl text-[#ff9f1c]/30 group-hover:text-[#ff9f1c]/70 transition"></i>
+                </div>
+                <div class="mt-8 text-sm text-white/70 leading-snug">
+                    Ram’s exile is now your 9-to-9. Sita’s fire test is your boundaries with family and self.
+                </div>
+                <div class="mt-6 flex items-center text-xs text-[#ff9f1c]">
+                    <span>RETURN TO THE KINGDOM</span> 
+                    <i class="fa-solid fa-arrow-right ml-2 group-hover:ml-3 transition"></i>
+                </div>
+            </div>
+            
+            <!-- Realm 3: Sushumna -->
+            <div onclick="openRealmModal(2)" class="realm-card bg-[#1a1625] border border-white/10 hover:border-[#00d4ff]/50 rounded-3xl p-7 group cursor-pointer">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="text-[#00d4ff] text-sm font-mono tracking-widest">REALM 03</div>
+                        <div class="text-3xl font-bold mt-3">SUṢUMNĀ HIGHWAY</div>
+                        <div class="text-sm text-white/60 mt-1">The Central Channel</div>
+                    </div>
+                    <i class="fa-solid fa-bolt text-4xl text-[#00d4ff]/30 group-hover:text-[#00d4ff]/70 transition"></i>
+                </div>
+                <div class="mt-8 text-sm text-white/70 leading-snug">
+                    Your actual HRV and sleep data become the fuel for Kuṇḍalinī. Watch the 12 lotuses bloom in real time.
+                </div>
+                <div class="mt-6 flex items-center text-xs text-[#00d4ff]">
+                    <span>RAISE THE ENERGY</span> 
+                    <i class="fa-solid fa-arrow-right ml-2 group-hover:ml-3 transition"></i>
+                </div>
+            </div>
+            
+            <!-- Realm 4: Gadhada -->
+            <div onclick="openRealmModal(3)" class="realm-card bg-[#1a1625] border border-white/10 hover:border-[#ff9f1c]/50 rounded-3xl p-7 group cursor-pointer">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="text-[#ff9f1c] text-sm font-mono tracking-widest">REALM 04</div>
+                        <div class="text-3xl font-bold mt-3">GADHADA 2077</div>
+                        <div class="text-sm text-white/60 mt-1">The Darbar of Seva</div>
+                    </div>
+                    <i class="fa-solid fa-hands-helping text-4xl text-[#ff9f1c]/30 group-hover:text-[#ff9f1c]/70 transition"></i>
+                </div>
+                <div class="mt-8 text-sm text-white/70 leading-snug">
+                    Swaminarayan’s living room reimagined as global digital darbar. Your real-life seva becomes bricks in the eternal temple.
+                </div>
+                <div class="mt-6 flex items-center text-xs text-[#ff9f1c]">
+                    <span>OFFER YOUR DARBAR</span> 
+                    <i class="fa-solid fa-arrow-right ml-2 group-hover:ml-3 transition"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE GAP FORGE -->
+    <section id="gap-forge" class="max-w-screen-2xl mx-auto px-8 py-20 bg-[#1a1625] border-y border-white/10">
+        <div class="max-w-2xl mx-auto text-center">
+            <div class="inline-flex items-center gap-x-2 text-xs tracking-[3px] text-[#00d4ff] font-mono mb-4">
+                <i class="fa-solid fa-wind"></i> 
+                <span>CORE PRACTICE • VIJÑĀNA BHAIRAVA VERSE 28</span>
+            </div>
+            
+            <h2 class="text-6xl font-black tracking-tighter epic-heading">The Gap Forge</h2>
+            <p class="mt-4 text-xl text-white/70">This is the heart of the third generation.<br>Hold the space between breaths. Watch what remains.</p>
+        </div>
+        
+        <div class="mt-12 flex flex-col items-center">
+            <!-- The Prana Orb -->
+            <div id="prana-orb" 
+                 class="prana-orb mx-auto flex items-center justify-center relative"
+                 onmousedown="startBreath(event)"
+                 onmouseup="endBreath()"
+                 ontouchstart="startBreath(event)"
+                 ontouchend="endBreath()">
+                <div class="text-center z-10">
+                    <div id="orb-text" class="text-white/90 text-xl font-medium tracking-widest">REST IN THE GAP</div>
+                    <div id="orb-subtext" class="text-[10px] text-white/60 mt-1 font-mono tracking-[1.5px]">HOLD TO AWAKEN</div>
+                </div>
+                
+                <!-- Inner light -->
+                <div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 to-transparent opacity-60"></div>
+            </div>
+            
+            <div class="mt-8 flex gap-x-4">
+                <button onclick="simulateInhale()" 
+                        class="px-6 py-2 text-sm border border-white/20 hover:bg-white/5 rounded-2xl flex items-center gap-x-2">
+                    <i class="fa-solid fa-arrow-up"></i> <span>INHALE</span>
+                </button>
+                <button onclick="simulateExhale()" 
+                        class="px-6 py-2 text-sm border border-white/20 hover:bg-white/5 rounded-2xl flex items-center gap-x-2">
+                    <i class="fa-solid fa-arrow-down"></i> <span>EXHALE</span>
+                </button>
+                <button onclick="holdGap()" 
+                        class="px-8 py-2 bg-[#00d4ff]/10 hover:bg-[#00d4ff]/20 text-[#00d4ff] text-sm rounded-2xl flex items-center gap-x-2 font-medium">
+                    <span>HOLD THE GAP</span>
+                </button>
+            </div>
+            
+            <div id="gap-status" class="mt-6 text-sm text-white/60 min-h-[24px]"></div>
+        </div>
+    </section>
+
+    <!-- LEELA LAB -->
+    <section id="leela-lab" class="max-w-screen-2xl mx-auto px-8 py-20">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <span class="text-[#ff9f1c] text-xs tracking-[3.5px] font-mono">INTERACTIVE EPICS</span>
+                <h2 class="text-6xl font-black tracking-tighter epic-heading">Leela Lab</h2>
+            </div>
+            <div class="text-sm text-white/60 max-w-xs hidden lg:block">Choose your path. Face the modern Kauravas and Ravanas. See the consequences in real time.</div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Leela 1 -->
+            <div class="bg-[#1a1625] border border-white/10 rounded-3xl p-8">
+                <div class="uppercase text-xs text-[#ff9f1c] tracking-widest">MAHABHARATA 3.0</div>
+                <div class="text-3xl font-bold mt-3">The Modern Dice Game</div>
+                <div class="text-white/70 mt-4">Your team meeting is the Sabha. Your colleague’s betrayal is Shakuni’s loaded dice. What do you do?</div>
+                
+                <div class="mt-8 space-y-3">
+                    <button onclick="playLeela(0,0)" class="w-full text-left px-5 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-sm">1. Call them out publicly (like Draupadi)</button>
+                    <button onclick="playLeela(0,1)" class="w-full text-left px-5 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-sm">2. Stay silent and plan in secret (like Yudhishthira)</button>
+                    <button onclick="playLeela(0,2)" class="w-full text-left px-5 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-sm">3. Offer seva instead — invite them to collaborate (Krishna path)</button>
+                </div>
+            </div>
+            
+            <!-- Leela 2 -->
+            <div class="bg-[#1a1625] border border-white/10 rounded-3xl p-8">
+                <div class="uppercase text-xs text-[#ff9f1c] tracking-widest">RAMAYANA 3.0</div>
+                <div class="text-3xl font-bold mt-3">The Golden Deer of Notifications</div>
+                <div class="text-white/70 mt-4">You’re deep in flow. A notification appears — “the golden deer”. Do you chase it?</div>
+                
+                <div class="mt-8 space-y-3">
+                    <button onclick="playLeela(1,0)" class="w-full text-left px-5 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-sm">1. Check immediately (Maricha’s trap)</button>
+                    <button onclick="playLeela(1,1)" class="w-full text-left px-5 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-sm">2. Silence it and continue (Ram’s focus)</button>
+                    <button onclick="playLeela(1,2)" class="w-full text-left px-5 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-sm">3. Turn it into seva — reply with kindness later</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="leela-result" class="mt-8 hidden bg-[#1a1625] border border-[#ff9f1c]/40 rounded-3xl p-7 text-center">
+            <div id="leela-result-text" class="text-xl"></div>
+            <div class="mt-4 text-sm text-white/60">Dharma Score updated • +42</div>
+        </div>
+    </section>
+
+    <!-- THE ORACLE -->
+    <section id="oracle" class="max-w-screen-2xl mx-auto px-8 py-20 border-t border-white/10">
+        <div class="max-w-2xl mx-auto text-center mb-12">
+            <span class="text-[#00d4ff] text-xs tracking-[3.5px] font-mono">HEALTH AS THE NEW VEDA</span>
+            <h2 class="text-6xl font-black tracking-tighter epic-heading mt-3">The Oracle</h2>
+            <p class="text-xl text-white/70 mt-4">Your body is the scripture. Ask anything. Receive living wisdom fused from the Gītā and Vachanāmṛta.</p>
+        </div>
+        
+        <div class="max-w-xl mx-auto">
+            <div class="flex gap-x-4">
+                <button onclick="connectHealth()" 
+                        class="flex-1 px-6 py-4 border border-[#00d4ff]/40 hover:bg-[#00d4ff]/5 text-[#00d4ff] rounded-3xl flex items-center justify-center gap-x-3 text-sm font-medium">
+                    <i class="fa-solid fa-heart-pulse"></i> 
+                    <span>CONNECT APPLE HEALTH</span>
+                </button>
+                
+                <button onclick="queryOracle()" 
+                        class="flex-1 px-6 py-4 bg-gradient-to-r from-[#00d4ff] to-[#0099cc] text-black font-bold rounded-3xl flex items-center justify-center gap-x-3 text-sm">
+                    <span>ASK THE ORACLE</span>
+                </button>
+            </div>
+            
+            <div id="health-stats" class="hidden mt-6 grid grid-cols-3 gap-4">
+                <div class="bg-[#1a1625] rounded-2xl p-4 text-center border border-white/10">
+                    <div class="text-xs text-white/60">PRĀṆA RESERVOIR</div>
+                    <div id="prana-val" class="text-4xl font-mono text-[#f4d35e]">87</div>
+                    <div class="text-xs">%</div>
+                </div>
+                <div class="bg-[#1a1625] rounded-2xl p-4 text-center border border-white/10">
+                    <div class="text-xs text-white/60">HRV • SUSHUMNA OPENNESS</div>
+                    <div id="hrv-val" class="text-4xl font-mono text-[#00d4ff]">72</div>
+                    <div class="text-xs">ms</div>
+                </div>
+                <div class="bg-[#1a1625] rounded-2xl p-4 text-center border border-white/10">
+                    <div class="text-xs text-white/60">SEVA HOURS THIS WEEK</div>
+                    <div id="seva-val" class="text-4xl font-mono text-[#ff9f1c]">14</div>
+                    <div class="text-xs">hrs</div>
+                </div>
+            </div>
+            
+            <div class="mt-6">
+                <input id="oracle-input" type="text" placeholder="My team is fighting like the Kauravas..." 
+                       class="w-full bg-[#1a1625] border border-white/10 focus:border-[#ff9f1c] rounded-3xl px-6 py-4 text-lg placeholder:text-white/40 outline-none">
+            </div>
+        </div>
+    </section>
+
+    <!-- HORIZON / VISION -->
+    <section class="max-w-screen-2xl mx-auto px-8 py-20 text-center border-t border-white/10">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-6xl font-black tracking-tighter epic-heading">The Horizon 2030–2050</h2>
+            <div class="text-2xl text-white/75 mt-6">By 2030 this experience runs on Neuralink.<br>By 2040 it becomes the dharma OS of the Mars colony.<br>By 2050 every child on Earth will have their first leela logged before they speak.</div>
+            
+            <div class="mt-10 text-xs text-white/60 tracking-widest">YOU ARE ALREADY HERE AT THE BEGINNING. PLAYER ONE.</div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/10 py-16 text-center text-xs text-white/50 max-w-screen-2xl mx-auto px-8">
+        <div class="flex justify-center gap-x-6 mb-4">
+            <a href="https://github.com/X9elysium/ho-x9elysium" target="_blank" class="hover:text-white">GITHUB</a>
+            <a href="#" class="hover:text-white">THE GAP FORGE API</a>
+            <a href="#" class="hover:text-white">JOIN THE SABHA</a>
+        </div>
+        <div>HO.x9elysium.com — The chariot is ready. <span class="text-[#ff9f1c]">Your move, Arjuna.</span></div>
+        <div class="mt-2 text-[10px]">D Patel 99 • Notorious Gujju • Greatest Player of All Time • Player One</div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="realm-modal" onclick="if (event.target.id === 'realm-modal') closeModal()" class="hidden fixed inset-0 bg-black/90 z-[200] flex items-center justify-center p-6">
+        <div onclick="event.stopImmediatePropagation()" class="bg-[#1a1625] max-w-lg w-full rounded-3xl p-9 border border-white/10 relative">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-white/50 hover:text-white"><i class="fa-solid fa-times fa-lg"></i></button>
+            
+            <div id="modal-content"></div>
+            
+            <div class="mt-8 pt-6 border-t border-white/10 flex gap-x-4">
+                <button onclick="startRealmPractice()" class="flex-1 py-3.5 bg-gradient-to-r from-[#ff9f1c] to-[#f4d35e] text-[#0a090f] font-bold rounded-2xl">BEGIN THIS REALM</button>
+                <button onclick="closeModal()" class="flex-1 py-3.5 border border-white/30 rounded-2xl">LATER</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#ff9f1c');
+        }
+        
+        // Particle system for hero
+        function createParticles() {
+            const container = document.querySelector('header');
+            if (!container) return;
+            
+            for (let i = 0; i < 28; i++) {
+                const p = document.createElement('div');
+                p.className = 'cosmic-particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * 100 + '%';
+                p.style.animationDelay = '-' + Math.random() * 18 + 's';
+                p.style.opacity = Math.random() * 0.6 + 0.2;
+                container.appendChild(p);
+                
+                setTimeout(() => {
+                    if (p.parentNode) p.parentNode.removeChild(p);
+                }, 20000);
+            }
+            
+            setInterval(() => {
+                if (document.querySelectorAll('.cosmic-particle').length < 15) {
+                    const p = document.createElement('div');
+                    p.className = 'cosmic-particle';
+                    p.style.left = Math.random() * 100 + '%';
+                    p.style.animationDelay = '-' + Math.random() * 5 + 's';
+                    container.appendChild(p);
+                    setTimeout(() => p.parentNode && p.parentNode.removeChild(p), 18000);
+                }
+            }, 800);
+        }
+        
+        // Dharma Score
+        let dharmaScore = 1247;
+        function updateScore(points) {
+            dharmaScore += points;
+            const scoreEl = document.getElementById('nav-score');
+            if (scoreEl) {
+                scoreEl.style.transition = 'none';
+                scoreEl.textContent = dharmaScore;
+                setTimeout(() => {
+                    scoreEl.style.transition = 'all 0.3s ease';
+                }, 10);
+            }
+            
+            // Confetti on big gains
+            if (points > 30) {
+                launchConfetti();
+            }
+        }
+        
+        function launchConfetti() {
+            const colors = ['#ff9f1c', '#f4d35e', '#00d4ff'];
+            for (let i = 0; i < 36; i++) {
+                const c = document.createElement('div');
+                c.style.position = 'fixed';
+                c.style.left = Math.random() * 100 + 'vw';
+                c.style.top = '-10px';
+                c.style.width = '8px';
+                c.style.height = '8px';
+                c.style.background = colors[Math.floor(Math.random() * 3)];
+                c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                c.style.zIndex = '9999';
+                c.style.opacity = Math.random() + 0.6;
+                document.body.appendChild(c);
+                
+                const duration = Math.random() * 1800 + 2200;
+                c.animate([
+                    { transform: `translateY(0) rotate(0deg)`, opacity: c.style.opacity },
+                    { transform: `translateY(${window.innerHeight + 100}px) rotate(${Math.random()*800 - 200}deg)`, opacity: 0 }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
+                }).onfinish = () => c.remove();
+            }
+        }
+        
+        // Gap Forge Logic
+        let breathState = 'rest';
+        let gapTimer = null;
+        
+        function startBreath(e) {
+            const orb = document.getElementById('prana-orb');
+            const text = document.getElementById('orb-text');
+            const sub = document.getElementById('orb-subtext');
+            
+            breathState = 'inhaling';
+            orb.style.transform = 'scale(1.35)';
+            orb.style.boxShadow = '0 0 110px #f4d35e, 0 0 180px rgba(255, 159, 28, 0.6)';
+            text.textContent = 'INHALING...';
+            sub.textContent = 'FILL THE LUNGS';
+            
+            clearTimeout(gapTimer);
+        }
+        
+        function endBreath() {
+            const orb = document.getElementById('prana-orb');
+            const text = document.getElementById('orb-text');
+            const sub = document.getElementById('orb-subtext');
+            const status = document.getElementById('gap-status');
+            
+            if (breathState === 'inhaling') {
+                breathState = 'holding';
+                orb.style.transform = 'scale(1.15)';
+                text.textContent = 'HOLD THE GAP';
+                sub.textContent = 'DO NOT CHASE THE BREATH';
+                status.innerHTML = '<span class="text-[#00d4ff]">The universe is listening...</span>';
+                
+                gapTimer = setTimeout(() => {
+                    if (breathState === 'holding') {
+                        triggerGapAwakening();
+                    }
+                }, 2800);
+            } else {
+                resetOrb();
+            }
+        }
+        
+        function simulateInhale() {
+            const orb = document.getElementById('prana-orb');
+            orb.style.transform = 'scale(1.35)';
+            document.getElementById('orb-text').textContent = 'INHALING...';
+            breathState = 'inhaling';
+        }
+        
+        function simulateExhale() {
+            const orb = document.getElementById('prana-orb');
+            orb.style.transform = 'scale(0.75)';
+            document.getElementById('orb-text').textContent = 'EXHALING...';
+            breathState = 'exhaling';
+            setTimeout(resetOrb, 1200);
+        }
+        
+        function holdGap() {
+            const orb = document.getElementById('prana-orb');
+            const text = document.getElementById('orb-text');
+            const sub = document.getElementById('orb-subtext');
+            
+            breathState = 'holding';
+            orb.classList.add('gap-hold');
+            orb.style.transform = 'scale(1.08)';
+            text.textContent = 'HOLDING THE GAP';
+            sub.textContent = 'THE DEATHLESS CENTER';
+            
+            setTimeout(() => {
+                if (breathState === 'holding') {
+                    triggerGapAwakening();
+                }
+            }, 2600);
+        }
+        
+        function triggerGapAwakening() {
+            const orb = document.getElementById('prana-orb');
+            const text = document.getElementById('orb-text');
+            const sub = document.getElementById('orb-subtext');
+            const status = document.getElementById('gap-status');
+            
+            orb.classList.remove('gap-hold');
+            orb.style.boxShadow = '0 0 160px #00d4ff, 0 0 280px rgba(0, 212, 255, 0.7)';
+            text.textContent = 'GAP AWAKENED';
+            sub.textContent = 'TAT TVAM ASI';
+            
+            status.innerHTML = `
+                <span class="text-[#f4d35e] font-medium">“As the breath turns from in to out, touch the energy-less, energy-filled center.”</span><br>
+                <span class="text-xs text-white/60">— Vijñāna Bhairava Tantra, Verse 28</span>
+            `;
+            
+            updateScore(47);
+            launchConfetti();
+            
+            setTimeout(() => {
+                resetOrb();
+                status.innerHTML = '<span class="text-emerald-400">The Gap is now awake in you.</span>';
+                setTimeout(() => status.innerHTML = '', 2800);
+            }, 4200);
+        }
+        
+        function resetOrb() {
+            const orb = document.getElementById('prana-orb');
+            const text = document.getElementById('orb-text');
+            const sub = document.getElementById('orb-subtext');
+            
+            orb.style.transform = 'scale(1)';
+            orb.style.boxShadow = '0 0 90px #f4d35e, 0 0 160px rgba(255, 159, 28, 0.5), inset 50px 50px 70px rgba(255,255,255,0.45), inset -45px -45px 70px rgba(0,0,0,0.65)';
+            text.textContent = 'REST IN THE GAP';
+            sub.textContent = 'HOLD TO AWAKEN';
+            breathState = 'rest';
+            clearTimeout(gapTimer);
+        }
+        
+        // Realm Modals
+        const realms = [
+            {
+                title: "KURUKṢETRA 3.0",
+                subtitle: "The Inner War",
+                content: `<p class="text-white/80">Your modern battlefield is the 9 a.m. standup and the 11 p.m. email. Every passive-aggressive message is a Kaurava arrow. The Gītā is your strategy guide.</p>
+                          <div class="mt-6 text-sm"><span class="text-[#ff9f1c]">CURRENT MISSION:</span> Respond to today’s most triggering Slack message with dharma instead of reaction.</div>`,
+                practice: "Log one real trigger and choose your response mode (Tantra pierce / Seva offer)."
+            },
+            {
+                title: "AYODHYĀ ETERNAL",
+                subtitle: "The Kingdom of Duty",
+                content: `<p class="text-white/80">Ram’s 14-year exile is now your commute, your deadlines, your family obligations. The question is not “why me?” but “how do I serve while staying true?”</p>
+                          <div class="mt-6 text-sm"><span class="text-[#ff9f1c]">CURRENT MISSION:</span> Perform one act of invisible seva today that no one will thank you for.</div>`,
+                practice: "Log a family or team seva. Watch your Akṣar conviction rise."
+            },
+            {
+                title: "SUṢUMNĀ HIGHWAY",
+                subtitle: "The Central Channel",
+                content: `<p class="text-white/80">Your spine is the highway. Your actual HRV and sleep data are the fuel. The 12 lotuses bloom when your nervous system is coherent.</p>
+                          <div class="mt-6 text-sm"><span class="text-[#00d4ff]">CURRENT MISSION:</span> Do 5 minutes of Verse 28 visualization after your next deep work block.</div>`,
+                practice: "Connect health data and watch your real-time Kuṇḍalinī rise %."
+            },
+            {
+                title: "GADHADA 2077",
+                subtitle: "The Darbar of Seva",
+                content: `<p class="text-white/80">Swaminarayan’s living room is now global and digital. Every coffee you make for your partner, every mentoring message, every “how can I help?” is an offering that builds the eternal temple.</p>
+                          <div class="mt-6 text-sm"><span class="text-[#ff9f1c]">CURRENT MISSION:</span> Offer one act of seva to someone who cannot repay you.</div>`,
+                practice: "Log real seva. Receive personalized Bapa ni Vaato."
+            }
+        ];
+        
+        function openRealmModal(index) {
+            const modal = document.getElementById('realm-modal');
+            const content = document.getElementById('modal-content');
+            const r = realms[index];
+            
+            content.innerHTML = `
+                <div class="text-[#ff9f1c] text-xs tracking-[3px] font-mono">REALM ${String(index+1).padStart(2,'0')}</div>
+                <h3 class="text-4xl font-bold mt-2">${r.title}</h3>
+                <div class="text-xl text-white/80">${r.subtitle}</div>
+                
+                <div class="my-7 text-[15px] leading-relaxed">
+                    ${r.content}
+                </div>
+                
+                <div class="text-xs text-white/50">“${index === 0 ? 'Karmaṇy evādhikāras te mā phaleṣu kadācana' : index === 1 ? 'Raghukula reeti sada chali aayi, pran jaye par vachan na jayi' : index === 2 ? 'As the breath turns… touch the center' : 'Offer every action as seva to Puruṣottama'}”</div>
+            `;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            window.currentRealm = index;
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('realm-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+        
+        function startRealmPractice() {
+            closeModal();
+            const idx = window.currentRealm;
+            document.getElementById('gap-forge').scrollIntoView({behavior: 'smooth'});
+            
+            setTimeout(() => {
+                const status = document.getElementById('gap-status');
+                status.innerHTML = `<span class="text-[#ff9f1c]">Entering ${realms[idx].title}...</span>`;
+                setTimeout(() => status.innerHTML = '', 2200);
+            }, 800);
+        }
+        
+        // Leela Lab
+        function playLeela(leelaIndex, choice) {
+            const resultBox = document.getElementById('leela-result');
+            const resultText = document.getElementById('leela-result-text');
+            
+            let msg = '';
+            let points = 25;
+            
+            if (leelaIndex === 0) { // Dice Game
+                if (choice === 0) msg = 'You called them out. The team went silent. Short-term respect, long-term tension. +18 dharma (but -12 prana from stress).';
+                else if (choice === 1) msg = 'You stayed silent and planned. The betrayal grew. You lost the moral high ground. -8 dharma.';
+                else { msg = 'You offered seva and invited collaboration. The “Kaurava” softened. True dharma victory. +67 dharma.'; points = 67; }
+            } else { // Golden Deer
+                if (choice === 0) msg = 'You chased the notification. 47 minutes lost. The deer was a trap. -22 dharma.';
+                else if (choice === 1) msg = 'You silenced it. Flow preserved. Later you replied with presence. +31 dharma.';
+                else { msg = 'You turned the notification into an act of kindness. The deer became a messenger. +58 dharma.'; points = 58; }
+            }
+            
+            resultText.innerHTML = msg;
+            resultBox.style.display = 'block';
+            resultBox.scrollIntoView({behavior: 'smooth'});
+            
+            updateScore(points);
+            
+            setTimeout(() => {
+                resultBox.style.transition = 'opacity 0.4s';
+                resultBox.style.opacity = '0.3';
+                setTimeout(() => {
+                    resultBox.style.display = 'none';
+                    resultBox.style.opacity = '1';
+                    resultBox.style.transition = '';
+                }, 400);
+            }, 5200);
+        }
+        
+        // Oracle
+        function connectHealth() {
+            const stats = document.getElementById('health-stats');
+            stats.style.display = 'grid';
+            
+            // Animate numbers
+            animateValue('prana-val', 62, 87, 1400);
+            animateValue('hrv-val', 41, 72, 1400);
+            animateValue('seva-val', 6, 14, 1400);
+            
+            const btns = document.querySelectorAll('#oracle button');
+            if (btns.length) btns[0].innerHTML = '<i class="fa-solid fa-check"></i> <span>CONNECTED — LIVE SYNC</span>';
+        }
+        
+        function animateValue(id, start, end, duration) {
+            const el = document.getElementById(id);
+            const range = end - start;
+            const startTime = performance.now();
+            
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const value = Math.floor(start + range * progress);
+                el.textContent = value;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = end;
+                }
+            }
+            
+            requestAnimationFrame(update);
+        }
+        
+        function queryOracle() {
+            const input = document.getElementById('oracle-input');
+            const val = input.value.trim();
+            
+            if (!val) {
+                input.placeholder = "Ask about your current Kaurava...";
+                return;
+            }
+            
+            const answers = [
+                `"Karmaṇy evādhikāras te mā phaleṣu kadācana" — You have the right to action alone. Offer the outcome to Puruṣottama. — Gītā 2.47 + Vachanāmṛta Gadhada 1.3`,
+                `“The jiva becomes brahmarup by keeping nishchay in Puruṣottama while resting in the Gap.” Rest first. Then act. — Swaminarayan`,
+                `“When the breath turns from in to out, touch the energy-less, energy-filled center.” The answer is already in the pause. — Vijñāna Bhairava 28`,
+                `Your team is not the Kauravas. Your reaction is. Choose the Gap before the reply. — Krishna to Arjuna (modernized)`
+            ];
+            
+            const answer = answers[Math.floor(Math.random() * answers.length)];
+            
+            const resultBox = document.createElement('div');
+            resultBox.className = `mt-6 p-6 border border-[#00d4ff]/40 bg-[#1a1625] rounded-3xl text-sm leading-relaxed wisdom-quote`;
+            resultBox.innerHTML = `
+                <div class="flex items-start gap-x-3">
+                    <i class="fa-solid fa-infinity text-[#00d4ff] mt-1"></i>
+                    <div>
+                        <div class="text-[#00d4ff] text-xs tracking-widest mb-1">ORACLE FUSION</div>
+                        <div>${answer}</div>
+                        <div class="mt-4 text-[10px] text-white/50">Dharma Score +29 • Prāṇa +14</div>
+                    </div>
+                </div>
+            `;
+            
+            const container = document.getElementById('oracle');
+            const existing = container.querySelector('.wisdom-quote');
+            if (existing) existing.remove();
+            container.appendChild(resultBox);
+            
+            updateScore(29);
+            input.value = '';
+            
+            setTimeout(() => {
+                resultBox.scrollIntoView({behavior: 'smooth'});
+            }, 300);
+        }
+        
+        // Enter Chariot
+        function enterChariot() {
+            const hero = document.querySelector('header');
+            hero.style.transition = 'all 0.6s ease';
+            hero.style.opacity = '0.1';
+            
+            setTimeout(() => {
+                document.getElementById('gap-forge').scrollIntoView({behavior: 'smooth'});
+                hero.style.opacity = '1';
+            }, 650);
+            
+            updateScore(15);
+        }
+        
+        function beginLeela() {
+            document.getElementById('leela-lab').scrollIntoView({behavior: 'smooth'});
+            setTimeout(() => {
+                launchConfetti();
+            }, 900);
+        }
+        
+        // Keyboard shortcuts
+        function setupKeyboard() {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'g' || e.key === 'G') {
+                    document.getElementById('gap-forge').scrollIntoView({behavior: 'smooth'});
+                    setTimeout(() => {
+                        const orb = document.getElementById('prana-orb');
+                        orb.style.boxShadow = '0 0 130px #00d4ff, 0 0 220px rgba(0, 212, 255, 0.6)';
+                        setTimeout(() => {
+                            orb.style.boxShadow = '0 0 90px #f4d35e, 0 0 160px rgba(255, 159, 28, 0.5), inset 50px 50px 70px rgba(255,255,255,0.45), inset -45px -45px 70px rgba(0,0,0,0.65)';
+                        }, 900);
+                    }, 400);
+                }
+                
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('realm-modal');
+                    if (!modal.classList.contains('hidden')) closeModal();
+                }
+                
+                if (e.key === 'h' || e.key === 'H') {
+                    const oracle = document.getElementById('oracle');
+                    oracle.scrollIntoView({behavior: 'smooth'});
+                }
+            });
+            
+            // Easter egg: type "gap" anywhere
+            let typed = '';
+            document.addEventListener('keypress', (e) => {
+                typed += e.key.toLowerCase();
+                if (typed.length > 5) typed = typed.slice(-5);
+                if (typed === 'gap') {
+                    typed = '';
+                    const orb = document.getElementById('prana-orb');
+                    orb.classList.add('gap-hold');
+                    setTimeout(() => orb.classList.remove('gap-hold'), 1400);
+                    updateScore(33);
+                }
+            });
+        }
+        
+        // Boot sequence
+        function bootWebsite() {
+            initializeTailwind();
+            createParticles();
+            
+            // Random initial score pulse
+            setTimeout(() => {
+                const scoreEl = document.getElementById('nav-score');
+                if (scoreEl) {
+                    scoreEl.style.transform = 'scale(1.15)';
+                    setTimeout(() => scoreEl.style.transform = 'scale(1)', 280);
+                }
+            }, 1800);
+            
+            // Welcome message
+            setTimeout(() => {
+                const status = document.getElementById('gap-status');
+                if (status && status.innerHTML === '') {
+                    status.innerHTML = '<span class="text-xs text-white/40">The chariot recognizes you, Player One.</span>';
+                    setTimeout(() => { if (status) status.innerHTML = ''; }, 2400);
+                }
+            }, 4200);
+            
+            setupKeyboard();
+            
+            // Demo: occasionally pulse the orb
+            setInterval(() => {
+                const orb = document.getElementById('prana-orb');
+                if (orb && Math.random() < 0.08 && !orb.classList.contains('gap-hold')) {
+                    orb.style.boxShadow = '0 0 110px #f4d35e, 0 0 180px rgba(255, 159, 28, 0.55)';
+                    setTimeout(() => {
+                        if (orb) orb.style.boxShadow = '0 0 90px #f4d35e, 0 0 160px rgba(255, 159, 28, 0.5), inset 50px 50px 70px rgba(255,255,255,0.45), inset -45px -45px 70px rgba(0,0,0,0.65)';
+                    }, 650);
+                }
+            }, 14000);
+            
+            // Mark as launched
+            console.log('%c[HO.x9elysium] Third Generation website fully launched and live on GitHub.', 'color:#ff9f1c');
+        }
+        
+        // Boot on load
+        window.onload = bootWebsite;
+    </script>
+</body>
+</html>
