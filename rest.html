@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest • x9elysium</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300&display=swap');
+
+        :root {
+            --gold: #d4af37;
+            --deep: #0a0a12;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0a0a12;
+            color: #e8d9b8;
+            font-family: 'Inter', system-ui, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .mist {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 60%, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+            animation: mist-drift 25s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .content {
+            text-align: center;
+            z-index: 3;
+            max-width: 620px;
+            padding: 0 24px;
+        }
+
+        .om {
+            font-size: 180px;
+            line-height: 1;
+            color: #d4af37;
+            text-shadow:
+                0 0 40px #d4af37,
+                0 0 80px #b8860b;
+            animation: om-pulse 4.2s ease-in-out infinite;
+            margin-bottom: 32px;
+            user-select: none;
+        }
+
+        .shloka {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 21px;
+            line-height: 1.45;
+            margin-bottom: 18px;
+            opacity: 0.95;
+        }
+
+        .transliteration {
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            color: #8a7c5f;
+            margin-bottom: 8px;
+        }
+
+        .meaning {
+            font-size: 14px;
+            color: #a38f6b;
+            max-width: 420px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .neeti {
+            position: absolute;
+            bottom: 48px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #5c523f;
+            text-transform: uppercase;
+            z-index: 3;
+        }
+
+        @keyframes om-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.95; }
+            50%     { transform: scale(1.035); opacity: 1; }
+        }
+
+        @keyframes mist-drift {
+            0%, 100% { opacity: 0.7; }
+            50%     { opacity: 0.95; }
+        }
+
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, #0a0a12 0%, #1a1528 100%);
+            z-index: 1;
+        }
+
+        /* When real video is added, uncomment below and remove .video-placeholder */
+        /*
+        video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.85;
+        }
+        */
+    </style>
+</head>
+<body>
+    <!-- VIDEO PLACEHOLDER — replace with real file when ready -->
+    <div class="video-placeholder">
+        <!--
+        <video id="wallpaper" autoplay loop muted playsinline>
+            <source src="assets/wallpaper.mp4" type="video/mp4">
+        </video>
+        -->
+    </div>
+
+    <div class="mist"></div>
+
+    <div class="content">
+        <div class="om">ॐ</div>
+
+        <div class="shloka">
+            यो मां पश्यति सर्वत्र सर्वं च मयि पश्यति<br>
+            तस्याहं न प्रणश्यामि स च मे न प्रणश्यति
+        </div>
+
+        <div class="transliteration">
+            yo māṁ paśyati sarvatra sarvaṁ ca mayi paśyati<br>
+            tasyāhaṁ na praṇaśyāmi sa ca me na praṇaśyati
+        </div>
+
+        <div class="meaning">
+            He who sees Me everywhere and sees everything in Me —<br>
+            I am never lost to him, nor is he ever lost to Me.
+        </div>
+    </div>
+
+    <div class="neeti">Neeti · Rest, warrior · The Gap is your bed</div>
+
+    <script>
+        // Press any key to fade toward black for true sleep mode.
+        document.addEventListener('keydown', () => {
+            document.body.style.transition = 'opacity 2.8s';
+            document.body.style.opacity = '0.03';
+        });
+    </script>
+</body>
+</html>
